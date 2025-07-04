@@ -2,12 +2,7 @@
 
 Seamlessly synchronize your EssentialsX player data with a MySQL database in real-time, fully configurable and robust.
 
----
 
-## Download
-
-- [Download latest](http://localhost:3000/plugins/essentials-mysql)
-- [View on GitHub](hhttps://github.com/bunbunconmeow/EssentailsXMySQL)
 
 ---
 

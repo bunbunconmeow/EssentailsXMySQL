@@ -83,7 +83,6 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin implement
     }
 
     // ───────────────────────────────────────────────────────────────────────────────
-// Fuck i hate this shit...
     @Override
     public void onEnable() {
         saveDefaultConfig();
