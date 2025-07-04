@@ -1,0 +1,13 @@
+mysql:
+  # Database hostname or IP
+  host: "localhost"
+
+  # Port number of the database
+  port: 3306
+
+  # Name of the database schema
+  database: "essentials"
+
+  # MySQL or MariaDB user credentials
+  user: "minecraft"
+  password: "yourPassword"
