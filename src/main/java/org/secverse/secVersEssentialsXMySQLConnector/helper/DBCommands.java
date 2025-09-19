@@ -12,14 +12,14 @@ public class DBCommands {
 
     public void upsertUser(UUID uuid, String name, double balance, String lastLoc, String homes, String group, long timestamp) throws SQLException {
         String sql = """
-            INSERT INTO essentials_users (uuid, name, balance, last_location, homes, group, synced, last_update)
+            INSERT INTO essentials_users (uuid, name, balance, last_location, homes, groupname, synced, last_update)
             VALUES (?, ?, ?, ?, ?, ?, TRUE, ?)
             ON DUPLICATE KEY UPDATE\s
                 name=VALUES(name),\s
                 balance=VALUES(balance),\s
                 last_location=VALUES(last_location),\s
                 homes=VALUES(homes),\s
-                group=VALUES(group),\s
+                groupname=VALUES(groupname),\s
                 synced=TRUE,
                 last_update=VALUES(last_update)""";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
