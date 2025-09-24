@@ -40,7 +40,7 @@ public class database {
               uuid          CHAR(36) PRIMARY KEY,
               name          VARCHAR(32),
               balance       DOUBLE,
-              group         VARCHAR(64),
+              groupname     VARCHAR(64),
               last_location TEXT,
               homes         TEXT,
               synced        BOOLEAN DEFAULT TRUE,
