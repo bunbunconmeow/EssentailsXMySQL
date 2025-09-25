@@ -141,7 +141,7 @@ public class Telemetry {
      * @throws IOException on network or IO errors
      */
     private void sendPost(String jsonPayload) throws IOException {
-        URL url = new URL("https://api.secvers.org/EssentialsXMySQL");
+        URL url = new URL("https://api.secvers.org//v1/telemetry/EssentailsXMySQL");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         try {
             conn.setRequestMethod("POST");
