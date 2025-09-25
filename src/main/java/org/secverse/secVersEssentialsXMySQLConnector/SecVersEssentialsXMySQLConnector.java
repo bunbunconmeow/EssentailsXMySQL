@@ -16,6 +16,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.secverse.secVersEssentialsXMySQLConnector.SecVersCom.Telemetry;
+import org.secverse.secVersEssentialsXMySQLConnector.SecVersCom.UpdateChecker;
 import org.secverse.secVersEssentialsXMySQLConnector.helper.DBCommands;
 import org.secverse.secVersEssentialsXMySQLConnector.helper.database;
 
@@ -26,11 +29,19 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+
+
+
 public final class SecVersEssentialsXMySQLConnector extends JavaPlugin implements Listener {
 
     private Essentials essentials;
     private database dbHelper;
     private DBCommands db;
+
+    private UpdateChecker updateChecker;
+    private Telemetry telemetry;
+
 
     // ───────────────────────── Utility: Location <-> String ─────────────────────────
     private static final String NULL_LOC = "NULL";
@@ -104,6 +115,34 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin implement
             return;
         }
 
+        // Check for Update
+        UpdateChecker checker = new UpdateChecker(this);
+        boolean checkUpdate = getConfig().getBoolean("checkUpdate", true);
+
+        if(checkUpdate) {
+            checker.checkNowAsync();
+        }
+
+
+        // Telemetry
+        telemetry = new Telemetry(this);
+        Map<String, Object> add = new HashMap<>();
+        add.put("event", "plugin_enable");
+        telemetry.sendTelemetryAsync(add);
+
+        int interval = getConfig().getInt("telemetry.send_interval_seconds", 3600);
+        if (getConfig().getBoolean("telemetry.enabled", true)) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    Map<String, Object> periodic = new HashMap<>();
+                    periodic.put("event", "periodic_ping");
+                    telemetry.sendTelemetryAsync(periodic);
+                }
+            }.runTaskTimerAsynchronously(this, interval * 20L, interval * 20L); // seconds -> ticks
+        }
+
+
         Bukkit.getPluginManager().registerEvents(this, this);
         getLogger().info("§aEssentials SQL Sync enabled");
     }
@@ -111,6 +150,14 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin implement
     @Override
     public void onDisable() {
         if (dbHelper != null) dbHelper.close();
+
+        if(telemetry != null) {
+            Map<String, Object> add = new HashMap<>();
+            add.put("event", "plugin_disable");
+            telemetry.sendTelemetryAsync(add);
+        }
+
+
     }
 
     private void syncFromDB(Player player) {
