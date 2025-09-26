@@ -1,10 +1,12 @@
-<<<<<<< Updated upstream
+
 # EssentailsXMySQL
 A Plugin to Sync EssentailsX Home and Money with the Database
 =======
 # EssentialsX MySQL Sync
 
 Seamlessly synchronize your EssentialsX player data with a MySQL database in real-time, fully configurable and robust.
+
+Webpage: https://secvers.org/plugins/essentials-mysql
 
 ---
 
