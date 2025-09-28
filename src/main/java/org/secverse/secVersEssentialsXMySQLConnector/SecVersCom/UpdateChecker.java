@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
  */
 public final class UpdateChecker {
 
-    // Hardcoded constants
     private static final String ENDPOINT_URL = "https://api.secvers.org/v1/plugin/EssentailsXMySQL";
     private static final String DOWNLOAD_URL = "https://secvers.org/";
     private static final Pattern SIMPLE_JSON_VERSION = Pattern.compile("\"version\"\\s*:\\s*\"([^\"]+)\"");

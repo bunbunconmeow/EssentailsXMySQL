@@ -1,0 +1,8 @@
+org\secverse\secVersEssentialsXMySQLConnector\helper\database.class
+org\secverse\secVersEssentialsXMySQLConnector\SecVersCom\UpdateChecker.class
+org\secverse\secVersEssentialsXMySQLConnector\SecVersCom\Telemetry$1.class
+org\secverse\secVersEssentialsXMySQLConnector\SecVersCom\UpdateChecker$1.class
+org\secverse\secVersEssentialsXMySQLConnector\SecVersEssentialsXMySQLConnector$1.class
+org\secverse\secVersEssentialsXMySQLConnector\helper\DBCommands.class
+org\secverse\secVersEssentialsXMySQLConnector\SecVersCom\Telemetry.class
+org\secverse\secVersEssentialsXMySQLConnector\SecVersEssentialsXMySQLConnector.class
