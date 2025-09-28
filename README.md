@@ -1,58 +1,44 @@
-# EssentialsX MySQL Sync  
+# ✨ EssentialsX MySQL Sync  
+
+[![Build](https://img.shields.io/github/actions/workflow/status/bunbunconmeow/EssentailsXMySQL/maven.yml?style=for-the-badge)](https://github.com/bunbunconmeow/EssentailsXMySQL/actions)  
+[![License](https://img.shields.io/github/license/bunbunconmeow/EssentailsXMySQL?style=for-the-badge)](./LICENSE)  
+[![Stars](https://img.shields.io/github/stars/bunbunconmeow/EssentailsXMySQL?style=for-the-badge)](https://github.com/bunbunconmeow/EssentailsXMySQL/stargazers)  
+[![Issues](https://img.shields.io/github/issues/bunbunconmeow/EssentailsXMySQL?style=for-the-badge)](https://github.com/bunbunconmeow/EssentailsXMySQL/issues)  
 
 Seamlessly synchronize your **EssentialsX** player data with a **MySQL database** across single or multiple servers.  
-Built for **modern Minecraft (1.21.4+)**, fully automatic, resilient, and configurable.  
+Supports **Minecraft 1.21.4+**, fully automatic, resilient, and configurable.  
 
 🔗 Website: [secvers.org/plugins/essentials-mysql](https://secvers.org/plugins/essentials-mysql)  
+🔗 GitHub: [bunbunconmeow/EssentailsXMySQL](https://github.com/bunbunconmeow/EssentailsXMySQL)  
 
 ---
 
 ## 🚀 What’s New (V2)
 
-- ✅ **Multi-Server Network Sync**  
-  Homes, balances, inventories, and more stay consistent across your Velocity/Bungee/Proxy setup.  
-
-- ✅ **Smart Auto-Sync**  
-  Detects whether DB or Player data should be trusted at join – no more manual imports/exports.  
-
-- ✅ **Dedicated Workers**  
-  - **PlayerDataWorker** → XP, health, hunger, inventories, potion effects, etc.  
-  - **HomeDataWorker** → Homes synced instantly when players set, delete, or rename them.  
-  - **EssentialsXDataWorker** → Balances, groups, and last-locations.  
-
-- ✅ **Fail-Safe Syncing**  
-  Only-if-newer DB guards prevent overwriting fresh data.  
-
-- ✅ **Telemetry & Update Checker**  
-  Opt-in telemetry with minimal data (plugin version, OS, server name) and auto-update notifications.  
+- 🌐 **Multi-Server Network Sync** – balances, homes, inventories, and profiles sync seamlessly across servers  
+- ⚡ **Smart Auto-Sync** – decides at join whether DB or Player data should be trusted  
+- 🛠️ **Dedicated Workers**:  
+  - `PlayerDataWorker` → XP, health, hunger, inventories, potion effects  
+  - `HomeDataWorker` → Homes synced instantly when set, deleted, or renamed  
+  - `EssentialsXDataWorker` → Balances, groups, and last-locations  
+- 🔒 **Only-if-newer Guards** – prevents overwriting fresh data with stale states  
+- 📡 **Telemetry & Update Checker** – optional, minimal data (plugin version, OS, server name)  
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-- 🔄 **Real-time MySQL synchronization**  
-  Inventories, stats, homes, balances, groups – synced automatically.  
-
-- 🌐 **Multi-Server Awareness**  
-  Each server has its own profile data (e.g. per-server homes) while global data like balance is shared.  
-
-- 🛡️ **Only-if-newer Guards**  
-  Prevents stale writes from overwriting fresh data in the database.  
-
-- ⚡ **Performance Optimized**  
-  Async DB I/O, dirty-flag-based flush system, minimal impact even under heavy load.  
-
-- 📝 **Detailed Logging & Metrics**  
-  Debug and monitor sync performance with ease.  
+✔ Real-time MySQL sync  
+✔ Multi-server awareness  
+✔ Async DB I/O, dirty-flagged flushing  
+✔ Safe imports/exports at join  
+✔ Debug-friendly logging & metrics  
 
 ---
 
-## ⚙️ Configuration
+## ⚙️ Configuration Example
 
 ```yaml
-# ──────────────────────────────
-# Database
-# ──────────────────────────────
 mysql:
   host: "localhost"
   port: 3306
@@ -62,26 +48,14 @@ mysql:
   enableSSL: false
   autoCommit: false
 
-# ──────────────────────────────
-# Server Identity
-# ──────────────────────────────
 serverName: "lobby-1"
 
-# ──────────────────────────────
-# Telemetry
-# ──────────────────────────────
 telemetry:
   enabled: true
   send_interval_seconds: 3600
 
-# ──────────────────────────────
-# Update Checker
-# ──────────────────────────────
 checkUpdate: true
 
-# ──────────────────────────────
-# Worker Settings
-# ──────────────────────────────
 playerdata:
   flush_interval_seconds: 20
 
