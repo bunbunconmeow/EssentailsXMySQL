@@ -8,6 +8,11 @@ Seamlessly synchronize your EssentialsX player data with a MySQL database in rea
 
 Webpage: https://secvers.org/plugins/essentials-mysql
 
+
+V2 WIP:
+New:
+- Sync over multiple Server for Server-Networks
+- Sync fully automatic
 ---
 
 ## Key Features
@@ -48,4 +53,4 @@ mysql:
   # MySQL or MariaDB user credentials
   user: "minecraft"
   password: "yourPassword"
->>>>>>> Stashed changes
+```
