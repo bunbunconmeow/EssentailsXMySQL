@@ -1,4 +1,4 @@
-# ✨ EssentialsX MySQL Sync  
+# EssentialsX MySQL Sync  
 
 Seamlessly synchronize your **EssentialsX** player data with a **MySQL database** across single or multiple servers.  
 Built for **modern Minecraft (1.21.4+)**, fully automatic, resilient, and configurable.  
