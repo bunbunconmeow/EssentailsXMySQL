@@ -1,56 +1,94 @@
+# ✨ EssentialsX MySQL Sync  
 
-# EssentailsXMySQL
-A Plugin to Sync EssentailsX Home and Money with the Database
-=======
-# EssentialsX MySQL Sync
+Seamlessly synchronize your **EssentialsX** player data with a **MySQL database** across single or multiple servers.  
+Built for **modern Minecraft (1.21.4+)**, fully automatic, resilient, and configurable.  
 
-Seamlessly synchronize your EssentialsX player data with a MySQL database in real-time, fully configurable and robust.
-
-Webpage: https://secvers.org/plugins/essentials-mysql
-
-
-V2 WIP:
-New:
-- Sync over multiple Server for Server-Networks
-- Sync fully automatic
----
-
-## Key Features
-
-- **Real-time MySQL synchronization**  
-  Ensures reliable and efficient data sync for all EssentialsX player data.
-
-- **Customizable table mappings**  
-  Map your EssentialsX data structure to fit your existing database schema.
-
-- **Automatic reconnect and retry**  
-  Built-in connection resilience for uninterrupted synchronization.
-
-- **Concurrent data processing**  
-  Optimized for minimal performance impact on your server.
-
-- **Lightweight and optimized**  
-  Designed to run on high-load servers without lag.
-
-- **Detailed logging and metrics**  
-  Full logs and performance metrics for easy debugging and monitoring.
+🔗 Website: [secvers.org/plugins/essentials-mysql](https://secvers.org/plugins/essentials-mysql)  
 
 ---
 
-## Configuration
+## 🚀 What’s New (V2)
+
+- ✅ **Multi-Server Network Sync**  
+  Homes, balances, inventories, and more stay consistent across your Velocity/Bungee/Proxy setup.  
+
+- ✅ **Smart Auto-Sync**  
+  Detects whether DB or Player data should be trusted at join – no more manual imports/exports.  
+
+- ✅ **Dedicated Workers**  
+  - **PlayerDataWorker** → XP, health, hunger, inventories, potion effects, etc.  
+  - **HomeDataWorker** → Homes synced instantly when players set, delete, or rename them.  
+  - **EssentialsXDataWorker** → Balances, groups, and last-locations.  
+
+- ✅ **Fail-Safe Syncing**  
+  Only-if-newer DB guards prevent overwriting fresh data.  
+
+- ✅ **Telemetry & Update Checker**  
+  Opt-in telemetry with minimal data (plugin version, OS, server name) and auto-update notifications.  
+
+---
+
+## ✨ Key Features
+
+- 🔄 **Real-time MySQL synchronization**  
+  Inventories, stats, homes, balances, groups – synced automatically.  
+
+- 🌐 **Multi-Server Awareness**  
+  Each server has its own profile data (e.g. per-server homes) while global data like balance is shared.  
+
+- 🛡️ **Only-if-newer Guards**  
+  Prevents stale writes from overwriting fresh data in the database.  
+
+- ⚡ **Performance Optimized**  
+  Async DB I/O, dirty-flag-based flush system, minimal impact even under heavy load.  
+
+- 📝 **Detailed Logging & Metrics**  
+  Debug and monitor sync performance with ease.  
+
+---
+
+## ⚙️ Configuration
 
 ```yaml
+# ──────────────────────────────
+# Database
+# ──────────────────────────────
 mysql:
-  # Database hostname or IP
   host: "localhost"
-
-  # Port number of the database
   port: 3306
-
-  # Name of the database schema
   database: "essentials"
-
-  # MySQL or MariaDB user credentials
   user: "minecraft"
   password: "yourPassword"
-```
+  enableSSL: false
+  autoCommit: false
+
+# ──────────────────────────────
+# Server Identity
+# ──────────────────────────────
+serverName: "lobby-1"
+
+# ──────────────────────────────
+# Telemetry
+# ──────────────────────────────
+telemetry:
+  enabled: true
+  send_interval_seconds: 3600
+
+# ──────────────────────────────
+# Update Checker
+# ──────────────────────────────
+checkUpdate: true
+
+# ──────────────────────────────
+# Worker Settings
+# ──────────────────────────────
+playerdata:
+  flush_interval_seconds: 20
+
+homes:
+  flush_interval_seconds: 20
+  debounce_ticks: 10
+
+essx:
+  balance_write_enabled: true
+  flush_interval_seconds: 20
