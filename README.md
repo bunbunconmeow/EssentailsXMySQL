@@ -1,6 +1,5 @@
 # ✨ EssentialsX MySQL Sync  
 
-[![Build](https://img.shields.io/github/actions/workflow/status/bunbunconmeow/EssentailsXMySQL/maven.yml?style=for-the-badge)](https://github.com/bunbunconmeow/EssentailsXMySQL/actions)  
 [![License](https://img.shields.io/github/license/bunbunconmeow/EssentailsXMySQL?style=for-the-badge)](./LICENSE)  
 [![Stars](https://img.shields.io/github/stars/bunbunconmeow/EssentailsXMySQL?style=for-the-badge)](https://github.com/bunbunconmeow/EssentailsXMySQL/stargazers)  
 [![Issues](https://img.shields.io/github/issues/bunbunconmeow/EssentailsXMySQL?style=for-the-badge)](https://github.com/bunbunconmeow/EssentailsXMySQL/issues)  
