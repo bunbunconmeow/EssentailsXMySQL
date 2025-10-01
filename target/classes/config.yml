@@ -1,3 +1,6 @@
+# ──────────────────────────────
+# Database Connection Settings
+# ──────────────────────────────
 mysql:
   # Database hostname or IP
   host: "localhost"
@@ -12,12 +15,52 @@ mysql:
   user: "minecraft"
   password: "yourPassword"
 
-# Telemetry
-# We will collect only the current Version, OS, Server Name.
-telemetry:
-  enabled: true                 # set to false to opt-out
-  send_interval_seconds: 3600   # optional for repeated sends
+  # SSL usage (true/false)
+  enableSSL: false
 
-# Check for Update
+  # Whether to use autocommit for statements
+  autoCommit: false
+
+
+# ──────────────────────────────
+# Server Identification
+# ──────────────────────────────
+# This name is stored with per-server profile data
+# and must be unique across your network.
+serverName: "default"
+
+
+# ──────────────────────────────
+# Telemetry
+# ──────────────────────────────
+# We only collect minimal info (plugin version, OS, server name).
+telemetry:
+  enabled: true                  # set to false to opt-out
+  send_interval_seconds: 3600    # how often telemetry pings are sent
+
+
+# ──────────────────────────────
+# Update Checker
+# ──────────────────────────────
 checkUpdate: true
 
+
+# ──────────────────────────────
+# Worker Settings
+# ──────────────────────────────
+playerdata:
+  # How often player XP/vitals/inventory/etc. are flushed to DB
+  flush_interval_seconds: 20
+
+homes:
+  # How often homes are flushed to DB
+  flush_interval_seconds: 20
+  # Debounce delay in ticks after sethome/delhome/renamehome before writing
+  debounce_ticks: 10
+
+essx:
+  # If true, this server writes global balances back to DB.
+  # If false, balances are imported from DB but never exported.
+  balance_write_enabled: true
+  # How often EssentialsX profile data (balance, group, last location) is flushed
+  flush_interval_seconds: 20

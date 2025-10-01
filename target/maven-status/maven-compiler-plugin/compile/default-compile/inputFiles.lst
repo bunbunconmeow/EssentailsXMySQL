@@ -1,5 +1,12 @@
-C:\Users\MinaMeow\Documents\GitHub\EssentailsXMySQL\src\main\java\org\secverse\secVersEssentialsXMySQLConnector\helper\database.java
-C:\Users\MinaMeow\Documents\GitHub\EssentailsXMySQL\src\main\java\org\secverse\secVersEssentialsXMySQLConnector\helper\DBCommands.java
-C:\Users\MinaMeow\Documents\GitHub\EssentailsXMySQL\src\main\java\org\secverse\secVersEssentialsXMySQLConnector\SecVersCom\Telemetry.java
-C:\Users\MinaMeow\Documents\GitHub\EssentailsXMySQL\src\main\java\org\secverse\secVersEssentialsXMySQLConnector\SecVersCom\UpdateChecker.java
-C:\Users\MinaMeow\Documents\GitHub\EssentailsXMySQL\src\main\java\org\secverse\secVersEssentialsXMySQLConnector\SecVersEssentialsXMySQLConnector.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/SecVersCom/Telemetry.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/SecVersCom/UpdateChecker.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/SecVersEssentialsXMySQLConnector.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/helper/DBCommands.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/helper/EssentialsMapper.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/helper/GroupCodec.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/helper/HomesCodec.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/helper/LocationCodec.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/helper/database.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/worker/EssentialsXDataWorker.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/worker/HomeDataWorker.java
+/home/user/Documents/GitHub/EssentailsXMySQL/src/main/java/org/secverse/secVersEssentialsXMySQLConnector/worker/PlayerDataWorker.java

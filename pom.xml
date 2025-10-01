@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.secverse</groupId>
-    <artifactId>SecVersESQLC</artifactId>
-    <version>1.0</version>
+    <artifactId>SecVersEssentialsXMySQL</artifactId>
+    <version>2.0 BETA</version>
     <packaging>jar</packaging>
 
-    <name>SecVersESQLC</name>
+    <name>SecVersEssentialsXMySQL</name>
 
     <properties>
         <java.version>21</java.version>

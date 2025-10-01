@@ -45,11 +45,24 @@ public final class UpdateChecker {
                     }
 
                     String localVersion = plugin.getDescription().getVersion();
-                    if (isOutdated(localVersion, remoteVersion)) {
-                        broadcastUpdate(remoteVersion, localVersion);
+                    String localNormalized = localVersion == null ? "" : localVersion.trim();
+
+                    boolean isBeta  = localNormalized.toUpperCase().contains("BETA");
+                    boolean isAlpha = localNormalized.toUpperCase().contains("ALPHA");
+                    boolean isPreRelease = isBeta || isAlpha;
+
+                    if (isPreRelease) {
+                        plugin.getLogger().warning("[Update] This plugin build is not stable (pre-release: "
+                                + localVersion + "). Do not use in production.");
                     } else {
-                        plugin.getLogger().info("[Update] Plugin is up-to-date. Local " + localVersion + ", Remote " + remoteVersion);
+                        if (isOutdated(localNormalized, remoteVersion)) {
+                            broadcastUpdate(remoteVersion, localNormalized);
+                        } else {
+                            plugin.getLogger().info("[Update] Plugin is up-to-date. Local "
+                                    + localNormalized + ", Remote " + remoteVersion);
+                        }
                     }
+
                 } catch (Exception ex) {
                     plugin.getLogger().warning("[Update] Failed to check updates: " + ex.getMessage());
                 }
@@ -95,7 +108,6 @@ public final class UpdateChecker {
         Server server = Bukkit.getServer();
         String legacy = "§c§l[SecVers] New Update available: " + remoteVersion
                 + " (current " + localVersion + "). Download: " + DOWNLOAD_URL;
-        Bukkit.broadcastMessage(legacy);
         server.getConsoleSender().sendMessage(legacy);
     }
 }

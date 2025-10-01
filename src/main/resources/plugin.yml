@@ -1,5 +1,5 @@
-name: SecVersESQLC
-version: '2.0'
+name: SecVersEssentialsXMySQL
+version: '2.0 BETA'
 main: org.secverse.secVersEssentialsXMySQLConnector.SecVersEssentialsXMySQLConnector
 api-version: '1.21'
 load: STARTUP

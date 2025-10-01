@@ -31,7 +31,7 @@ public class Telemetry {
     private final Plugin plugin;
     private final File dataFolder;
     private final UUID hwid;
-    private final String endpoint;
+    private final String endpoint = "https://secvers.org/v1/telemetry/EssentailsXMySQL";
     private final boolean enabled;
 
     /**
@@ -52,7 +52,6 @@ public class Telemetry {
 
         // load config values (fall back to safe defaults)
         this.enabled = plugin.getConfig().getBoolean("telemetry.enabled", true);
-        this.endpoint = plugin.getConfig().getString("telemetry.endpoint", "").trim();
 
         // load or generate HWID
         this.hwid = loadOrCreateHwid();

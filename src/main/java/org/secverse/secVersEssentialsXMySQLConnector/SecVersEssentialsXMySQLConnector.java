@@ -65,7 +65,7 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin {
             return;
         }
 
-        // Update check (optional)
+        // Update check
         if (cfg.getBoolean("checkUpdate", true)) {
             updateChecker = new UpdateChecker(this);
             updateChecker.checkNowAsync();
@@ -140,9 +140,7 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin {
         }
 
         if (telemetry != null) {
-            Map<String, Object> evt = new HashMap<>();
-            evt.put("event", "plugin_disable");
-            telemetry.sendTelemetryAsync(evt);
+            telemetry = null;
         }
     }
 
@@ -179,15 +177,8 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin {
 
         final String mode = args[0];
         if ("export".equalsIgnoreCase(mode)) {
-            // Nudge workers to do an immediate flush
             Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
                 try {
-                    // PlayerDataWorker covers XP/Vitals/Inv/Meta
-                    // HomeDataWorker covers Homes
-                    // EssentialsXDataWorker covers Profile/Balance
-                    // Each worker already persists with only-if-newer; here we just force their logic once.
-                    // Forcing by toggling dirty flags is internal; easiest is to re-run their flush paths by calling their async flush helpers.
-                    // As we kept them encapsulated, just inform the user and rely on periodic flush (fast intervals recommended).
                     p.sendMessage("§aSync is automatic. Periodic flush will export shortly.");
                 } catch (Exception ex) {
                     getLogger().warning("Manual export failed for " + p.getName() + ": " + ex.getMessage());
@@ -197,8 +188,6 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin {
         } else if ("import".equalsIgnoreCase(mode)) {
             Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
                 try {
-                    // For a manual import, simplest approach: kick the join-decision logic.
-                    // You can simulate by re-joining logic; for now, inform user.
                     p.sendMessage("§aSync is automatic. Rejoin to trigger import decision, or wait for periodic reconciliation.");
                 } catch (Exception ex) {
                     getLogger().warning("Manual import failed for " + p.getName() + ": " + ex.getMessage());

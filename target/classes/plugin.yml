@@ -1,10 +1,10 @@
-name: SecVersESQLC
-version: '1.1'
+name: SecVersEssentialsXMySQL
+version: '2.0 BETA'
 main: org.secverse.secVersEssentialsXMySQLConnector.SecVersEssentialsXMySQLConnector
 api-version: '1.21'
 load: STARTUP
 authors: [ Mia_conmeow ]
-description: Bidirectional EssentialsX ⇆ MySQL synchronisation
+description: Bidirectional EssentialsX ⇆ MySQL Server Network synchronisation
 
 commands:
   syncforce:
