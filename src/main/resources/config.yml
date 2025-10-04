@@ -48,8 +48,8 @@ checkUpdate: true
 # ──────────────────────────────
 # Worker Settings
 # ──────────────────────────────
-playerdata:
-  # How often player XP/vitals/inventory/etc. are flushed to DB
+playerdata: #experimantal
+  enabled: false
   flush_interval_seconds: 20
 
 homes:
@@ -64,3 +64,12 @@ essx:
   balance_write_enabled: true
   # How often EssentialsX profile data (balance, group, last location) is flushed
   flush_interval_seconds: 20
+
+dupeProtection: #experimantal
+  enabled: false
+  action: "LOG"
+  auditLog: true
+  suppressMsAfterImport: 1500
+  rescanSeconds: 60
+  embedUidForShulkersOnly: true
+  cleanupOldUidsOnStart: true

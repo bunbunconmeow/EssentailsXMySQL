@@ -56,7 +56,6 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin {
         dbHelper = new database(cfg);
         try {
             dbHelper.connect();
-            // Your database helper currently exposes setupTable(); keep this call name.
             dbHelper.setupTable();
             db = new DBCommands(dbHelper.getConnection());
         } catch (SQLException ex) {
@@ -96,15 +95,20 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin {
         final int exFlushSecs = cfg.getInt("essx.flush_interval_seconds", 20);
         final boolean balanceWriteEnabled = cfg.getBoolean("essx.balance_write_enabled", true);
 
+        final boolean enablePlayerData = cfg.getBoolean("playerdata.enabled", false);
+
         // Start workers
-        playerDataWorker = new PlayerDataWorker(
-                this,
-                essentials,
-                db,
-                serverName,
-                playerFlushSecs
-        );
-        playerDataWorker.start();
+        if(enablePlayerData) {
+            playerDataWorker = new PlayerDataWorker(
+                    this,
+                    essentials,
+                    db,
+                    serverName,
+                    playerFlushSecs
+            );
+            playerDataWorker.start();
+        }
+
 
         homeDataWorker = new HomeDataWorker(
                 this,
@@ -144,19 +148,12 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin {
         }
     }
 
-    /**
-     * Stops all workers if they were started.
-     */
     private void safeStopWorkers() {
         try { if (playerDataWorker != null) playerDataWorker.stop(); } catch (Exception ignored) {}
         try { if (homeDataWorker != null) homeDataWorker.stop(); } catch (Exception ignored) {}
         try { if (essentialsXDataWorker != null) essentialsXDataWorker.stop(); } catch (Exception ignored) {}
     }
 
-    /**
-     * Manual command entry point. Kept minimal on purpose since workers handle sync automatically.
-     * /syncforce import|export
-     */
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player p)) return true;

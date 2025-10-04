@@ -24,8 +24,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 /**
- * EssentialsXDataWorker
- *
  * Purpose:
  *   Smart synchronization for remaining EssentialsX data that is not handled by the other workers:
  *     - Global: player name and balance
@@ -36,13 +34,6 @@ import java.util.logging.Logger;
  *   - If DB profile is empty and local has data -> export Player -> DB
  *   - If both have data and differ -> DB wins and is applied to Player
  *
- * Balance policy:
- *   - If balanceWriteEnabled is true, this server writes global balance to DB on changes and flush intervals
- *   - If balanceWriteEnabled is false, this server imports balance from DB at join and ignores write attempts
- *
- * Safety:
- *   - All DB writes are guarded via last_update only-if-newer in DBCommands
- *   - All Bukkit mutations run on main thread; all DB I/O runs asynchronously
  */
 public final class EssentialsXDataWorker implements Listener {
 
