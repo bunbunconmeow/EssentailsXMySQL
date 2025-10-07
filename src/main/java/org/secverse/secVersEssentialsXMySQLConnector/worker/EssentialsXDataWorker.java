@@ -23,18 +23,6 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
-/**
- * Purpose:
- *   Smart synchronization for remaining EssentialsX data that is not handled by the other workers:
- *     - Global: player name and balance
- *     - Per-server profile: primary group and last location
- *
- * Join policy:
- *   - If local profile is empty and DB has data -> import DB -> Player
- *   - If DB profile is empty and local has data -> export Player -> DB
- *   - If both have data and differ -> DB wins and is applied to Player
- *
- */
 public final class EssentialsXDataWorker implements Listener {
 
     private final Plugin plugin;

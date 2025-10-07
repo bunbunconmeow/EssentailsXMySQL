@@ -23,19 +23,6 @@ public class GroupCodec {
     private GroupCodec() { }
 
     /**
-     * Serializes a single group to JSON array form.
-     * Returns "[]" for null or empty input.
-     */
-    public static String serialize(String group) {
-        if (group == null) return "[]";
-        String g = normalize(group);
-        if (g == null) return "[]";
-        JsonArray arr = new JsonArray();
-        arr.add(g);
-        return GSON.toJson(arr);
-    }
-
-    /**
      * Serializes multiple groups to a JSON array string.
      * Duplicates are removed, order of first appearance is preserved.
      * Returns "[]" for null or empty input.

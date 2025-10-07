@@ -60,16 +60,4 @@ public class LocationCodec {
             return null;
         }
     }
-
-    /**
-     * Compares two serialized locations for equality.
-     * Returns true if both strings decode into the same valid Location.
-     */
-    public static boolean equalsSerialized(String a, String b) {
-        if (Objects.equals(a, b)) return true;
-        Location la = deserialize(a);
-        Location lb = deserialize(b);
-        if (la == null || lb == null) return false;
-        return la.equals(lb);
-    }
 }

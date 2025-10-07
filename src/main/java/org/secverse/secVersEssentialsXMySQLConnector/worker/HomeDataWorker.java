@@ -18,25 +18,6 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
-/**
- * HomeDataWorker
- *
- * Purpose:
- *   Synchronize EssentialsX homes between the server and MySQL per-server profile table.
- *
- * Join policy:
- *   - If player has no homes locally and DB has homes -> import DB -> player.
- *   - If DB has no homes and player has homes -> export player -> DB.
- *   - If both have homes and differ -> prefer DB -> player to avoid data loss.
- *
- * Live updates:
- *   - Intercepts EssentialsX home commands (/sethome, /delhome, /renamehome) and exports shortly after.
- *   - Provides a periodic safeguard flush for players marked dirty.
- *
- * Safety:
- *   - Uses only-if-newer guard in DBCommands to avoid overwriting newer data.
- *   - All Bukkit mutations happen on main thread; DB I/O runs async.
- */
 public final class HomeDataWorker implements Listener {
 
     private final Plugin plugin;
@@ -168,11 +149,7 @@ public final class HomeDataWorker implements Listener {
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> flushHomesAsync(p));
         dirty.remove(p.getUniqueId());
     }
-
-    /**
-     * Intercepts EssentialsX home commands and schedules a debounced export.
-     * Commands handled: /sethome, /delhome, /renamehome
-     */
+    
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onCommand(PlayerCommandPreprocessEvent e) {
         String msg = e.getMessage();
