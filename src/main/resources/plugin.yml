@@ -14,5 +14,5 @@ commands:
 
 permissions:
   essentials.sync:
-    description: Allows manual import/export of Essentials data
+    description: Allows manual import/export of EssentialsX data
     default: op

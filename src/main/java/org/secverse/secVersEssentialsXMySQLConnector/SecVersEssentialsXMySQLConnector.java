@@ -130,7 +130,7 @@ public final class SecVersEssentialsXMySQLConnector extends JavaPlugin {
         );
         essentialsXDataWorker.start();
 
-        getLogger().info("Essentials SQL Sync enabled");
+        getLogger().info("EssentialsX SQL Sync enabled");
     }
 
     @Override
